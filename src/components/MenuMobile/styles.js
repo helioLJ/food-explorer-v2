@@ -65,10 +65,7 @@ export const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 10px;
   gap: 10px;
-
-  border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
 `
 
 export const NavLink = styled.a`
@@ -77,6 +74,10 @@ export const NavLink = styled.a`
   font-weight: 300;
   font-size: 24px;
   line-height: 140%;
+
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
 
   color: ${({ theme }) => theme.COLORS.LIGHT_300};
 `

@@ -17,6 +17,8 @@ export const Container = styled.button`
   border: none;
   border-radius: 5px;
 
+  font-size: clamp(9px, 3vw, 14px);
+
   &:hover {
     background-color: ${({ theme }) => theme.COLORS.TOMATO_200};
   }

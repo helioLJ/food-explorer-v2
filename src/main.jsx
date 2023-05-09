@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import GlobalStyles from './styles/global'
+
 import { DishDetailsUser } from './pages/DishDetailsUser'
+import { SignIn } from './pages/SignIn'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <DishDetailsUser />
+      <SignIn />
     </ThemeProvider>
   </React.StrictMode>
 )

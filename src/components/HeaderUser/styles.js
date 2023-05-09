@@ -17,6 +17,10 @@ export const Container = styled.header`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
+  > button:nth-child(3) {
+    max-width: 216px;
+  }
+
   > button:last-child {
     border: none;
     background: none;

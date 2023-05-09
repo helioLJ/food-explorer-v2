@@ -3,6 +3,8 @@ import { SearchField } from "../SearchField";
 import { X } from "@phosphor-icons/react";
 
 export function MenuMobile({ handleMenuToggle, isOpen }) {
+  const isAdmin = false
+
   return (
     <Container isOpen={isOpen}>
       <HeaderMobile>
@@ -13,9 +15,10 @@ export function MenuMobile({ handleMenuToggle, isOpen }) {
       </HeaderMobile>
 
       <Content>
-        <SearchField></SearchField>
+        <SearchField />
 
         <Nav>
+          {isAdmin && (<NavLink>Novo Prato</NavLink>)}
           <NavLink>Sair</NavLink>
         </Nav>
       </Content>

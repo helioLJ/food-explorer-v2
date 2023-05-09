@@ -8,7 +8,7 @@ export const Container = styled.button`
 
   padding: 12px 32px;
 
-  max-width: 216px;
+  height: 56px;
   width: 100%;
   height: 56px;
 
