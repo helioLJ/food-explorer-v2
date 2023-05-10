@@ -14,7 +14,7 @@ export const Content = styled.main`
   grid-area: "content";
   padding: 24px 121px 0;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 12px;

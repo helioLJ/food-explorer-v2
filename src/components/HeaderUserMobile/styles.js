@@ -15,6 +15,8 @@ export const Container = styled.header`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
+  z-index: 999;
+
   > button {
     border: none;
     background: none;

@@ -1,6 +1,6 @@
 import { Container } from "./styles"
 
-export function Button({ title, icon: Icon, price = null, loading = false, ...rest }) {
+export function Button({ title, icon: Icon, price = 0, loading = false, ...rest }) {
   return (
     <Container
       type="button"
@@ -9,7 +9,7 @@ export function Button({ title, icon: Icon, price = null, loading = false, ...re
     >
       {Icon && <Icon size={22} color="#FFFFFF" />}
       {loading ? 'Carregando...' : title}
-      {price && ` ∙ R$ ${price.toFixed(2)}`}
+      {price && ` ∙ ${price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`}
     </Container>
   )
 }
