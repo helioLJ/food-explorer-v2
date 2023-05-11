@@ -2,34 +2,35 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: grid;
-  grid-template-rows: 104px 1fr 77px;
+  grid-template-rows: 104px 1fr;
   grid-template-areas: "header"
-  "content"
-  "footer";
+  "content";
 
   height: 100vh;
+
+  .main-container {
+    grid-area: content;
+
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.COLORS.LIGHT_700};
+      border-radius: 8px;
+    }
+  }
 `
 
 export const Content = styled.main`
-  grid-area: "content";
-
   padding-top: 164px;
   padding-inline: clamp(24px, 8vw, 123px);
-  padding-bottom: 48px;
-
-  height: 100%;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 12px;
-}
-  &::-webkit-scrollbar-track {
-    background: none;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.COLORS.LIGHT_700};
-    border-radius: 8px;
-  }
+  padding-bottom: 64px;
 
   .banner {
     display: flex;
@@ -136,6 +137,7 @@ export const Content = styled.main`
       pointer-events: none;
     }
   }
+
 
   @media (max-width: 800px) {
     padding: 44px 26px 25px;

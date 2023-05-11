@@ -10,7 +10,7 @@ export const Container = styled.header`
 
   padding-inline: clamp(24px, 8vw, 123px);
 
-  grid-area: "header";
+  grid-area: header;
 
   width: 100%;
   height: 104px;

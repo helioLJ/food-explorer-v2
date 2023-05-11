@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 24px 24px 46px;
 
   width: 304px;
-  margin-right: 15px;
+  margin-right: 30px;
   height: 462px;
 
   border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};

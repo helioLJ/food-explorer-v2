@@ -9,9 +9,9 @@ import { HeaderUserMobile } from "../../components/HeaderUserMobile";
 import { Container, Content } from "./styles";
 
 import Salada from "../../assets/salada.png"
-import { Ingredient } from "../../components/Ingredient";
 import { Counter } from "../../components/Counter";
 import { Receipt } from "@phosphor-icons/react";
+import { IngredientDish } from "../../components/IngredientDish";
 
 export function DishDetailsUser() {
   const price = 25.20
@@ -53,12 +53,12 @@ export function DishDetailsUser() {
             <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.</p>
 
             <div className="ingredients">
-              <Ingredient name="alface" />
-              <Ingredient name="cebola" />
-              <Ingredient name="pão naan" />
-              <Ingredient name="pepino" />
-              <Ingredient name="rabanete" />
-              <Ingredient name="tomate" />
+              <IngredientDish name="alface" />
+              <IngredientDish name="cebola" />
+              <IngredientDish name="pão naan" />
+              <IngredientDish name="pepino" />
+              <IngredientDish name="rabanete" />
+              <IngredientDish name="tomate" />
             </div>
 
             <div className="actionBtns">

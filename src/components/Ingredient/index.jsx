@@ -1,9 +1,24 @@
+import { Plus, X } from '@phosphor-icons/react'
 import { Container } from "./styles";
 
-export function Ingredient({ name }) {
+export function Ingredient({ isNew, value, onClick, ...rest }) {
   return (
-    <Container>
-      {name}
+    <Container
+      isNew={isNew}
+    >
+      <input
+        type="text"
+        value={value}
+        readOnly={!isNew}
+        {...rest}
+        placeholder="Adicionar"
+      />
+      <button
+        type="button"
+        onClick={onClick}
+      >
+        {isNew ? <Plus size={17} color="#7C7C8A" /> : <X size={17} color="#FFFFFF" />}
+      </button>
     </Container>
   )
 }

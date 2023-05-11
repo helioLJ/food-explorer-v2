@@ -1,22 +1,34 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: inline;
-  
-  padding: 4px 8px;
-  
-  width: fit-content;
   height: 32px;
-
-  background-color: ${({ theme }) => theme.COLORS.DARK_1000};
+  position: relative;
+  width: auto;
   
-  border-radius: 5px;
+  > input {
+    background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.LIGHT_600};
+    color: ${({ theme, isNew }) => isNew ? theme.COLORS.LIGHT_500 : theme.COLORS.LIGHT_100};
+    border: ${({ theme, isNew }) => isNew ? `1px dashed ${theme.COLORS.LIGHT_500}` : "none"};
 
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    
+    padding: 8px 16px;
+    
+    border-radius: 8px;
 
-  color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    height: 100%;
+    width: 100%;
+  }
+
+  > button {
+    position: absolute;
+    top: 6.5px;
+    right: 15px;
+    background: none;
+    border: none;
+  }
 `

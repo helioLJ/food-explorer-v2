@@ -1,14 +1,15 @@
 import { Container } from "./styles";
 
-export function InputText({ label, placeholder, ...rest }) {
+export function TextArea({ label, placeholder, ...rest }) {
   return (
     <Container>
       <label htmlFor={label}>{label}</label>
-      <input
+      <textarea
         id={label}
         placeholder={placeholder}
         {...rest}
-      />
+      >
+      </textarea>
     </Container>
   )
 }

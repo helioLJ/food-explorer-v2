@@ -16,27 +16,20 @@ export const Container = styled.div`
     margin-bottom: 8px;
   }
 
-  > input {
+  .input-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
+    flex-wrap: wrap;
+    gap: 16px;
     
-    padding: 12px 14px;
+    padding: 8px;
 
     width: 100%;
-    height: 48px;
+    height: auto;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     border: none;
     border-radius: 8px;
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
-  }
-
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
   }
 `

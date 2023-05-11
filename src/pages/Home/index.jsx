@@ -26,7 +26,7 @@ export function Home() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     focusOnSelect: true,
   };
@@ -41,69 +41,71 @@ export function Home() {
       <HeaderUser />
       <HeaderUserMobile />
 
-      <Content>
-        <section className="banner">
-          <div>
-            <img src={Banner} alt="Frutas, lanches e folhas" />
-            <img src={BannerMobile} alt="Frutas, lanches e folhas" />
+      <div className="main-container">
+        <Content>
+          <section className="banner">
+            <div>
+              <img src={Banner} alt="Frutas, lanches e folhas" />
+              <img src={BannerMobile} alt="Frutas, lanches e folhas" />
+            </div>
+
+            <div>
+              <h1>Sabores inigualáveis</h1>
+              <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+            </div>
+          </section>
+
+          <h2>Refeições</h2>
+          <div className="carouselContainer">
+            <div className="shadowOne"></div>
+            <Slider {...settings}>
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+            </Slider>
+            <div className="shadowTwo"></div>
           </div>
 
-          <div>
-            <h1>Sabores inigualáveis</h1>
-            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+          <h2>Sobremesas</h2>
+          <div className="carouselContainer">
+            <div className="shadowOne"></div>
+            <Slider {...settingsRtl}>
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+            </Slider>
+            <div className="shadowTwo"></div>
           </div>
-        </section>
 
-        <h2>Refeições</h2>
-        <div className="carouselContainer">
-          <div className="shadowOne"></div>
-          <Slider {...settings}>
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-          </Slider>
-          <div className="shadowTwo"></div>
-        </div>
+          <h2>Bebidas</h2>
+          <div className="carouselContainer">
+            <div className="shadowOne"></div>
+            <Slider {...settings}>
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+              <DishCard />
+            </Slider>
+            <div className="shadowTwo"></div>
+          </div>
 
-        <h2>Sobremesas</h2>
-        <div className="carouselContainer">
-          <div className="shadowOne"></div>
-          <Slider {...settingsRtl}>
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-          </Slider>
-          <div className="shadowTwo"></div>
-        </div>
-
-        <h2>Bebidas</h2>
-        <div className="carouselContainer">
-          <div className="shadowOne"></div>
-          <Slider {...settings}>
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-            <DishCard />
-          </Slider>
-          <div className="shadowTwo"></div>
-        </div>
-      </Content>
-
-      <Footer />
+        </Content>
+        <Footer />
+      </div>
     </Container>
   )
 }
