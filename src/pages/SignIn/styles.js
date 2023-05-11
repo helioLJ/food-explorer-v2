@@ -13,6 +13,7 @@ export const Container = styled.div`
     grid-template-rows: 100px 1fr;
     grid-template-areas: "logo"
     "form";
+    padding-top: 140px;
   }
 `
 
@@ -80,6 +81,12 @@ export const FormContainer = styled.div`
 
   @media (max-width: 800px) {
     align-self: flex-start;
-    padding: 32px;
+    padding: 0 32px 32px;
+    justify-content: start;
+    background-color: transparent;
+
+    h1 {
+      display: none;
+    }
   }
 `
