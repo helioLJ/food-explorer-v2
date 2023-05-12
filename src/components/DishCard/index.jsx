@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HeartStraight, PencilSimple } from "@phosphor-icons/react";
 import { Container } from "./styles";
 
 import { Counter } from "../Counter";
 import { Button } from "../Button";
 
-import ExampleImage from "../../assets/camarao.png"
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
+import { useOrder } from "../../hooks/order";
 
-export function DishCard({ name, image_url, favorite, description, pricee }) {
-  const price = 25.20
-  const isAdmin = false
+export function DishCard({ name, image_url, description, price, id }) {
+  const { user } = useAuth()
+  const isAdmin = user.isAdmin
+  const navigate = useNavigate()
+  const { verifyOrder } = useOrder()
+
   const [totalPrice, setTotalPrice] = useState(price)
   const [quantity, setQuantity] = useState(1)
   const [isFavorite, setIsFavorite] = useState(false)
+  const [imageUrl, setImageUrl] = useState(null)
 
   function increaseQuantity() {
     if (quantity === 10) {
@@ -34,32 +41,102 @@ export function DishCard({ name, image_url, favorite, description, pricee }) {
     setIsFavorite(!isFavorite)
   }
 
+  async function handleOrder() {
+    const currentOrderId = await verifyOrder()
+    let orderStatus
+
+    if(currentOrderId !== 0) {
+      const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
+      orderStatus = currentOrder.order.status
+    }
+
+    if (orderStatus === "Entregue" || currentOrderId === 0) {
+      // Criar um novo pedido utilizando POST
+      try {
+        const createdOrder = await api.post(`/orders/${id}`, { quantity })
+        alert(createdOrder.data.message)
+        navigate(`/order/${currentOrderId + 1}`)
+      } catch (error) {
+        if (error.response.data.message) {
+          alert(error.response.data.message);
+        } else {
+          alert("Não foi possível executar esta ação.");
+        }
+      }
+    } else if (orderStatus === "Preparando") {
+      // Lançar um "alert" informando o usuário para esperar o pedido ser entregue
+    } else if (orderStatus === "Pendente") {
+      // Incrementa outro prato ou altera a quantidade de algum prato neste pedido
+      try {
+        const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
+        const currentDish = currentOrder.dishes.find((dish) => dish.id === id);
+        let updatedOrder
+        if(currentDish === undefined) {
+          updatedOrder = await api.put(`/orders/${currentOrderId}`, {
+            dish_id: id,
+            quantity: quantity
+          })
+        } else {
+          updatedOrder = await api.put(`/orders/${currentOrderId}`, {
+            dish_id: id,
+            quantity: currentDish.quantity + quantity
+          })
+        }
+        
+        alert(updatedOrder.data.message)
+        navigate(`/order/${currentOrderId}`)
+
+      } catch (error) {
+        if (error.response.data.message) {
+          alert(error.response.data.message);
+        } else {
+          alert("Não foi possível executar esta ação.");
+        }
+      }
+    }
+
+  }
+
+  useEffect(() => {
+    async function fetchImage() {
+      setImageUrl(`${api.defaults.baseURL}/files/${image_url}`)
+    }
+
+    fetchImage()
+  }, [])
+
   return (
     <Container>
-      <button onClick={toggleFavorite} className="favorite">
-        {isAdmin ? (
+      {isAdmin ? (
+        <button onClick={() => navigate(`/editdish/${id}`)} className="favorite">
           <PencilSimple size={28} color="#e1e6e6" />
-        ) : (
+        </button>
+      ) : (
+        <button onClick={toggleFavorite} className="favorite">
           <HeartStraight
             size={28}
             color={isFavorite ? "#AB222E" : "#E1E1E6"}
             weight={isFavorite ? "fill" : "regular"}
           />
-        )}
-      </button>
+        </button>
+      )}
 
-      <img src={ExampleImage} alt="Imagem do Prato" />
+      <img src={imageUrl} alt="Imagem do Prato" />
 
-      <a href="#">Spaguetti Gambe &#62;</a>
+      <Link to={`dish/${id}`} >{name} &#62;</Link>
 
-      <p>Massa fresca com camarões e pesto.</p>
+      <p>{description}</p>
 
-      <span>{price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span>
+      <span>R$ {price}</span>
 
       {!isAdmin && (
         <div className="cardBtns">
           <Counter quantity={quantity} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity} />
-          <Button title="incluir" price={totalPrice} />
+          <Button
+            onClick={handleOrder}
+            title="incluir"
+            price={totalPrice}
+          />
         </div>
       )}
     </Container>

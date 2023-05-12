@@ -6,7 +6,7 @@ export function SamplePrevArrow({ onClick }) {
     <Container
       onClick={onClick}
     >
-      <CaretLeft size={32} color="#ffffff" />
+      <CaretLeft weight="bold" size={32} color="#ffffff" />
     </Container>
   )
 }

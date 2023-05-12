@@ -22,6 +22,7 @@ export const Container = styled.div`
   > img {
     width: 176px;
     height: 176px;
+    border-radius: 50%;
   }
 
   > a {
@@ -46,6 +47,12 @@ export const Container = styled.div`
     text-align: center;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
   }
 
   > span {

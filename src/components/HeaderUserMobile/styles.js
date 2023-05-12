@@ -22,7 +22,7 @@ export const Container = styled.header`
     background: none;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     display: flex;
   }
 `

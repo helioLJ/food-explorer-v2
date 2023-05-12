@@ -14,6 +14,7 @@ export const Content = styled.main`
   grid-area: content;
   padding-top: 24px;
   padding-inline: clamp(24px, 8vw, 123px);
+  padding-bottom: 24px;
   height: 100%;
   overflow-y: auto;
 
@@ -33,7 +34,6 @@ export const Content = styled.main`
   > section {
     display: flex;
 
-
     > div:first-child {
       width: 50%;
       display: flex;
@@ -49,7 +49,7 @@ export const Content = styled.main`
         margin-top: 18px;
       }
 
-      button:last-child {
+      > button:last-child {
         display: none;
         align-self: flex-end;
         max-width: 216px;
@@ -63,10 +63,8 @@ export const Content = styled.main`
       .payment {
         width: 100%;
         max-width: 530px;
-        height: 445px;
         border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
         border-radius: 8px;
-
 
         .payment-header {
           display: flex;
@@ -74,7 +72,6 @@ export const Content = styled.main`
           height: 81px;
           border-bottom: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
           
-
           .pix {
             color: ${({ theme }) => theme.COLORS.LIGHT_300};
             background: none;
@@ -82,11 +79,12 @@ export const Content = styled.main`
             width: 50%;
             height: 100%;
             border-radius: 8px 0 0 0;
-            background-color: ${({ theme }) => theme.COLORS.DARK_800};
+            background-color: ${({ theme, paymentOption }) => paymentOption == "pix" ? theme.COLORS.DARK_800 : "transparent"};
             border-right: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
           }
 
           .cc {
@@ -96,9 +94,79 @@ export const Content = styled.main`
             width: 50%;
             height: 100%;
             border-radius: 0 8px 0 0;
+            background-color: ${({ theme, paymentOption }) => paymentOption == "cc" ? theme.COLORS.DARK_800 : "transparent"};;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+          }
+        }
+
+        .payment-body {
+          padding: 50px 90px;
+          justify-content: center;
+          align-items: center;
+
+          background-color: ${({ theme, paymentOption }) => paymentOption == "pix" ? theme.COLORS.LIGHT_500 : "transparent"};
+
+          .status-payment {
+            text-align: center;
+
+            p {
+              font-family: 'Roboto';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 24px;
+              line-height: 28px;
+              text-align: center;
+
+              color: ${({ theme }) => theme.COLORS.LIGHT_400};
+            }
+          }
+
+          .input-wrapper {
+            width: 100%;
+
+            label {
+              font-family: 'Roboto';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 100%;
+              color: ${({ theme }) => theme.COLORS.LIGHT_400};
+              margin-bottom: 8px;
+              display: block;
+            }
+
+            input {
+              padding: 12px 14px;
+
+              width: 100%;
+              height: 48px;
+
+              background-color: transparent;
+              border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
+              border-radius: 5px;
+              color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+              &:placeholder {
+                color: ${({ theme }) => theme.COLORS.LIGHT_100};
+              }
+            }
+          }
+
+          .secondRow {
+            margin-top: 37px;
+            display: flex;
+            gap: 17px;
+
+            .input-wrapper {
+              width: 50%;
+            }
+          }
+
+          > button {
+            margin-top: 50px;
           }
         }
       }
@@ -118,7 +186,7 @@ export const Content = styled.main`
 }
 
   @media (max-width: 800px) {
-    padding: 36px 56px 0;
+    padding: 36px 56px 36px;
 
     > section {
       > div:first-child {

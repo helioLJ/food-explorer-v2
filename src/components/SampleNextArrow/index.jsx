@@ -6,7 +6,7 @@ export function SampleNextArrow({ onClick }) {
     <Container
       onClick={onClick}
     >
-      <CaretRight size={32} color="#ffffff" />
+      <CaretRight weight="bold" size={32} color="#ffffff" />
     </Container>
   )
 }

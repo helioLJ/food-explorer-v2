@@ -1,9 +1,7 @@
 import { UploadSimple } from "@phosphor-icons/react";
 import { Container } from "./styles";
-import { useState } from "react";
 
-export function InputFile({ label, placeholder, ...rest }) {
-  const [image, setImage] = useState()
+export function InputFile({ label, placeholder, handleImage, ...rest }) {
 
   return (
     <Container>
@@ -14,15 +12,11 @@ export function InputFile({ label, placeholder, ...rest }) {
           id={label}
           placeholder={placeholder}
           {...rest}
-          value={image}
-          onChange={(e) => {
-            setImage(e.target.value)
-            console.log(e.target.value);
-          }}
+          onChange={handleImage}
         />
         <div className="input-content">
-        <UploadSimple size={32} color="#ffffff" />
-        <p>Selecione imagem</p>
+          <UploadSimple size={32} color="#ffffff" />
+          <p>Selecione imagem</p>
         </div>
       </div>
     </Container>

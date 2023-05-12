@@ -1,9 +1,11 @@
 import { Container, Content, HeaderMobile, Nav, NavLink } from "./styles";
 import { SearchField } from "../SearchField";
 import { X } from "@phosphor-icons/react";
+import { useAuth } from "../../hooks/auth";
 
 export function MenuMobile({ handleMenuToggle, isOpen }) {
-  const isAdmin = false
+  const { signOut, user } = useAuth()
+  const isAdmin = user.isAdmin
 
   return (
     <Container isOpen={isOpen}>
@@ -18,8 +20,10 @@ export function MenuMobile({ handleMenuToggle, isOpen }) {
         <SearchField />
 
         <Nav>
-          {isAdmin && (<NavLink>Novo Prato</NavLink>)}
-          <NavLink>Sair</NavLink>
+          {isAdmin ? <NavLink to="/newdish">Novo Prato</NavLink> : ""}
+          <NavLink to="/favorites">Favoritos</NavLink>
+          <NavLink to="/orderhistoric">Histórico de Pedidos</NavLink>
+          <button onClick={signOut}>Sair</button>
         </Nav>
       </Content>
     </Container>

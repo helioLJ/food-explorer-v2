@@ -6,13 +6,14 @@ export const Container = styled.div`
   grid-template-areas: "header"
   "content"
   "footer";
+  overflow: hidden;
 
   height: 100vh;
 `
 
 export const Content = styled.main`
   grid-area: content;
-  padding: 24px 121px 0;
+  padding: 24px 121px 24px;
   height: 100%;
   overflow-y: auto;
 
@@ -41,9 +42,9 @@ export const Content = styled.main`
       justify-content: center;
 
       > img {
-        width: 100%;
-        max-width: 400px;
-        max-height: 400px;
+        width: 400px;
+        height: 400px;
+        border-radius: 100%;
       }
     }
 
@@ -84,11 +85,11 @@ export const Content = styled.main`
         gap: 33px;
         margin-top: 48px;
         
-        > button {
+        > a {
           width: 172px;
         }
 
-        > button:nth-child(3) {
+        > a:nth-child(3) {
           display: none;
         }
       }
@@ -96,7 +97,7 @@ export const Content = styled.main`
   }
 
   @media (max-width: 800px) {
-    padding: 36px 56px 0;
+    padding: 36px 56px;
 
     > section {
       flex-direction: column;
@@ -108,8 +109,8 @@ export const Content = styled.main`
         align-items: center;
 
         > img {
-          max-width: 264px;
-          max-height: 264px;
+          width: 264px;
+          height: 264px;
         }
       }
 
@@ -129,16 +130,16 @@ export const Content = styled.main`
         }
 
         .actionBtns {
-          > button:nth-child(1) {
+          > a:nth-child(1) {
             width: 100%;
           }
 
-          > button:nth-child(3) {
+          > a:nth-child(3) {
             display: flex;
             width: 100%;
           }
 
-          > button:nth-child(2) {
+          > a:nth-child(2) {
             display: none;
           }
         }

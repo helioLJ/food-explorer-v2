@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   grid-area: content;
-  padding: 24px 121px 0;
+  padding: 24px 121px 24px;
   height: 100%;
   overflow-y: auto;
 
@@ -47,6 +47,22 @@ export const Content = styled.main`
     form {
       display: flex;
       flex-direction: column;
+      
+      .image-container {
+        width: 210px;
+        height: 210px;
+        z-index: 99;
+        margin-bottom: 32px;
+        background-color: ${({ theme }) => theme.COLORS.DARK_900};
+        border-radius: 50%;
+
+        > img {
+          border-radius: 50%;
+          width: 210px;
+          height: 210px;
+          border: none;
+        }
+      }
 
       .rowOne {
         display: flex;

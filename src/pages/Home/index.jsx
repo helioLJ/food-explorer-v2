@@ -13,12 +13,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { SampleNextArrow } from "../../components/SampleNextArrow";
 import { SamplePrevArrow } from "../../components/SamplePrevArrow";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 export function Home() {
   const settings = {
     className: "slider variable-width",
     dots: true,
-    infinite: true,
+    infinite: false,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -28,13 +30,37 @@ export function Home() {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    focusOnSelect: true,
   };
 
   const settingsRtl = {
     ...settings,
     rtl: true
   }
+
+  const [meals, setMeals] = useState([])
+  const [desserts, setDesserts] = useState([])
+  const [drinks, setDrinks] = useState([])
+
+  useEffect(() => {
+    async function getMeals() {
+      const response = await api.get("/dishes?category=Refei%C3%A7%C3%B5es")
+      setMeals(response.data)
+    }
+
+    async function getDesserts() {
+      const response = await api.get("/dishes?category=Sobremesas")
+      setDesserts(response.data)
+    }
+
+    async function getDrinks() {
+      const response = await api.get("/dishes?category=Bebidas")
+      setDrinks(response.data)
+    }
+
+    getMeals()
+    getDesserts()
+    getDrinks()
+  }, [])
 
   return (
     <Container>
@@ -59,14 +85,18 @@ export function Home() {
           <div className="carouselContainer">
             <div className="shadowOne"></div>
             <Slider {...settings}>
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
+              {
+                meals.map(meal => (
+                  <DishCard
+                    key={meal.id}
+                    name={meal.name}
+                    image_url={meal.image_url}
+                    description={meal.description}
+                    price={meal.price}
+                    id={meal.id}
+                  />
+                ))
+              }
             </Slider>
             <div className="shadowTwo"></div>
           </div>
@@ -75,14 +105,18 @@ export function Home() {
           <div className="carouselContainer">
             <div className="shadowOne"></div>
             <Slider {...settingsRtl}>
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
+              {
+                desserts.map(dessert => (
+                  <DishCard
+                    key={dessert.id}
+                    name={dessert.name}
+                    image_url={dessert.image_url}
+                    description={dessert.description}
+                    price={dessert.price}
+                    id={dessert.id}
+                  />
+                ))
+              }
             </Slider>
             <div className="shadowTwo"></div>
           </div>
@@ -91,14 +125,18 @@ export function Home() {
           <div className="carouselContainer">
             <div className="shadowOne"></div>
             <Slider {...settings}>
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
-              <DishCard />
+              {
+                drinks.map(drink => (
+                  <DishCard
+                    key={drink.id}
+                    name={drink.name}
+                    image_url={drink.image_url}
+                    description={drink.description}
+                    price={drink.price}
+                    id={drink.id}
+                  />
+                ))
+              }
             </Slider>
             <div className="shadowTwo"></div>
           </div>

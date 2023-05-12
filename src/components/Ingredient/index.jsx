@@ -12,6 +12,11 @@ export function Ingredient({ isNew, value, onClick, ...rest }) {
         readOnly={!isNew}
         {...rest}
         placeholder="Adicionar"
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            onClick();
+          }
+        }}      
       />
       <button
         type="button"

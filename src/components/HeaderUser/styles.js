@@ -17,7 +17,20 @@ export const Container = styled.header`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
-  > button:nth-child(3) {
+  > a {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+    text-align: center;
+    width: 65%;
+  }
+
+  > a:nth-child(5) {
     max-width: 216px;
   }
 
@@ -26,7 +39,7 @@ export const Container = styled.header`
     background: none;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     display: none;
   }
 `

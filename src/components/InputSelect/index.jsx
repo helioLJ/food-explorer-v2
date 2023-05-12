@@ -8,10 +8,10 @@ export function InputSelect({ label, ...rest }) {
         id={label}
         {...rest}
       >
-        <option value="exemplo">exemplo</option>
-        <option value="exemplo">exemplo</option>
-        <option value="exemplo">exemplo</option>
-        <option value="exemplo">exemplo</option>
+        <option value="example">Categorias</option>
+        <option value="Refeições">Refeições</option>
+        <option value="Sobremesas">Sobremesas</option>
+        <option value="Bebidas">Bebidas</option>
       </select>
     </Container>
   )

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   position: absolute;
@@ -13,7 +14,7 @@ export const Container = styled.div`
   grid-template-areas: "header"
   "content";
 
-  height: calc(100vh - 77px);
+  height: 100%;
 
   transform: ${({ isOpen }) => (isOpen ? 'translateX(100%)' : 'translateX(0)')};
   transition: transform 0.3s ease-in-out;
@@ -66,9 +67,27 @@ export const Nav = styled.nav`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+
+  > button {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 140%;
+
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+    background: none;
+    border: none;
+    text-align: left;
+  }
 `
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 300;
