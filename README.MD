@@ -1,6 +1,4 @@
 ![Logo](./src/assets/logo-food-explorer.png)
-![Logo](./src/assets/capa-food-explorer.png)
-![Logo]()
 
 # Food Explorer V2 🍔💻
 
