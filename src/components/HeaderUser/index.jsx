@@ -7,7 +7,7 @@ import LogoFoodExplorerAdmin from "../../assets/logo-food-explorer-admin.png"
 import { SearchField } from "../SearchField";
 import { OrderButton } from "../OrderButton";
 import { SignOut } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../hooks/auth";
 import { useOrder } from "../../hooks/order";
@@ -18,6 +18,7 @@ export function HeaderUser() {
   const { signOut, user } = useAuth()
   const isAdmin = user.isAdmin
   const { verifyOrder } = useOrder()
+  const navigate = useNavigate()
 
   const [totalQuantity, setTotalQuantity] = useState(null)
   const [currentOrderId, setCurrentOrderId] = useState(null)
@@ -54,7 +55,10 @@ export function HeaderUser() {
         )
       }
 
-      <button onClick={signOut}>
+      <button onClick={() => {
+        signOut()
+        navigate("/")
+      }}>
         <SignOut size={32} color="#FFFFFF" />
       </button>
     </Container>
