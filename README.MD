@@ -14,7 +14,7 @@ Food Explorer é um projeto completo de ponta a ponta com um front-end e back-en
 - [Rodando localmente 💻](#rodando-localmente)
 - [Apêndice 📚](#apêndice)
 - [Roadmap 🚗](#roadmap)
-- [Documentação de cores 🎨](#documentação-de-cores)
+- [Figma do Projeto 🎨](#figma-do-projeto)
 - [Licença 📜](#licença)
 
 
@@ -38,7 +38,7 @@ Phosphor Icons, React Icons, Axios, dayjs, React Input Mask, React QR Code, Reac
 - Visualizar cada prato de forma detalhada
 - Pesquisar pratos por ingredientes
 - Incluir pratos em seu pedido
-- Favoritrar pratos prediletos
+- Favoritar pratos prediletos
 - Visualizar pedido com seus pratos incluídos
 - Poder remover pratos do pedido e ver o preço total atualizando
 - Simular fluxo de pagamento com PIX (Scaneando o QR Code) ou Cartão de Crédito.
@@ -52,18 +52,23 @@ Phosphor Icons, React Icons, Axios, dayjs, React Input Mask, React QR Code, Reac
 - Editar Prato
 - Excluir Prato
 - Alterar status de pedidos
+
 ## Screenshots
 
-| Capa do Projeto 💡      | Estrutura de Pastas 🔍     |
+| SignIn      | SignUp     |
 | ------------- | ------------- |
-| <img alt="Capa do Projeto" src="./src/assets/capa-food-explorer.png"> | <img alt="Estrutura de Pastas do Projeto" src="https://i.imgur.com/Tk0zqQd.png"> |
-| SigIn      | SignOut     |
-| <img alt="Capa do Projeto" src="./src/assets/capa-food-explorer.png"> | <img alt="Estrutura de Pastas do Projeto" src="https://i.imgur.com/Tk0zqQd.png"> |
-| Home      | Dish     |
-| <img alt="Capa do Projeto" src="./src/assets/capa-food-explorer.png"> | <img alt="Estrutura de Pastas do Projeto" src="https://i.imgur.com/Tk0zqQd.png"> |
+| <img alt="SignIn" src="https://i.imgur.com/LjRWRe5.png"> | <img alt="SignUp" src="https://i.imgur.com/IMahAmI.png"> |
+| Home      | Home (Admin)     |
+| <img alt="Home" src="https://i.imgur.com/53f9wOd.png"> | <img alt="Home (Admin)" src="https://i.imgur.com/xj4WqPu.png"> |
+| Adicionar Prato      | Favoritos     |
+| <img alt="Adicionar Prato" src="https://i.imgur.com/rJJgUu4.png"> | <img alt="Favoritos" src="https://i.imgur.com/knR8t6I.png"> |
+| Pedido      | Histórico de Pedidos     |
+| <img alt="Pedido" src="https://i.imgur.com/blSAUfM.png"> | <img alt="Histórico de Pedidos" src="https://i.imgur.com/IBJMxcn.png"> | 
+
 
 
 ## Rodando localmente
+
 
 Clone o projeto
 
@@ -98,21 +103,17 @@ Inicie o servidor
 
 ## Roadmap
 
-- Melhorar o suporte de navegadores
 
-- Adicionar mais integrações
+- Adicionar filtro de preço
 
-## Documentação de cores
 
-| Cor               | Hexadecimal                                                |
-| ----------------- | ---------------------------------------------------------------- |
-| Cor exemplo       | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Cor exemplo       | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| Cor exemplo       | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| Cor exemplo       | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+## Figma do Projeto
+
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FZssWYW8RmoogbaNP0kQvEX%2Ffood-explorer-v2-(Community)%3Ftype%3Ddesign%26node-id%3D201%253A1532%26t%3D5blfrwKVVf2PHlPL-1" allowfullscreen></iframe>
 
 
 ## Licença
 
-[MIT](./LICENSE)
 
+[MIT](./LICENSE)
