@@ -20,7 +20,7 @@ export function Home() {
   const settings = {
     className: "slider variable-width",
     dots: true,
-    infinite: false,
+    infinite: true,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
