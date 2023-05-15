@@ -8,7 +8,7 @@ import { MdPix, MdCreditCard } from 'react-icons/md';
 import { Container, Content } from "./styles";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import InputMask from 'react-input-mask';
 import { CheckCircle, ForkKnife, Receipt } from "@phosphor-icons/react";
 
@@ -147,12 +147,14 @@ export function OrderDetails() {
                   ) : paymentOption == "pix" ? (
                     <>
                       <div>
-                        <QRCode
-                          size={256}
-                          style={{ height: "auto", maxWidth: "100%", width: "100%", borderRadius: "10px" }}
-                          value={"https://food-explorer-v2.vercel.app/confirmation"}
-                          viewBox={`0 0 256 256`}
-                        />
+                        <Link to="/confirmation">
+                          <QRCode
+                            size={256}
+                            style={{ height: "auto", maxWidth: "100%", width: "100%", borderRadius: "10px" }}
+                            value={"https://food-explorer-v2.vercel.app/confirmation"}
+                            viewBox={`0 0 256 256`}
+                          />
+                        </Link>
                       </div>
                     </>
                   ) : (
@@ -198,11 +200,11 @@ export function OrderDetails() {
                 }
               </div>
             </div>
-                <Button
-                  title="Voltar"
-                  className="backButton"
-                  onClick={handlePaymentFlow}
-                />
+            <Button
+              title="Voltar"
+              className="backButton"
+              onClick={handlePaymentFlow}
+            />
           </div>
         </section>
       </Content>

@@ -41,7 +41,7 @@ Phosphor Icons, React Icons, Axios, dayjs, React Input Mask, React QR Code, Reac
 - Favoritar pratos prediletos
 - Visualizar pedido com seus pratos incluídos
 - Poder remover pratos do pedido e ver o preço total atualizando
-- Simular fluxo de pagamento com PIX (Scaneando o QR Code) ou Cartão de Crédito.
+- Simular fluxo de pagamento com PIX ou Cartão de Crédito.
 - Receber mensagem de pedido enviado após o pagamento.
 - Visualizar histórico de pedidos
 - Visualizar todos os pratos favoritos

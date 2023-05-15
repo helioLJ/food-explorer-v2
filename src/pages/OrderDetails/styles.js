@@ -60,6 +60,10 @@ export const Content = styled.main`
     > div:last-child {
       width: 50%;
 
+      .backButton {
+        display: none;
+      }
+
       .payment {
         width: 100%;
         max-width: 530px;
@@ -167,10 +171,6 @@ export const Content = styled.main`
 
           > button {
             margin-top: 50px;
-          }
-
-          .backButton {
-            display: none;
           }
         }
       }
