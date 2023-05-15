@@ -110,7 +110,7 @@ Inicie o servidor
 ## Figma do Projeto
 
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FZssWYW8RmoogbaNP0kQvEX%2Ffood-explorer-v2-(Community)%3Ftype%3Ddesign%26node-id%3D201%253A1532%26t%3D5blfrwKVVf2PHlPL-1" allowfullscreen></iframe>
+[Figma](https://www.figma.com/file/ZssWYW8RmoogbaNP0kQvEX/food-explorer-v2-(Community)?type=design&node-id=201%3A1532&t=5blfrwKVVf2PHlPL-1)
 
 
 ## Licença
