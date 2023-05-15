@@ -150,7 +150,7 @@ export function OrderDetails() {
                         <QRCode
                           size={256}
                           style={{ height: "auto", maxWidth: "100%", width: "100%", borderRadius: "10px" }}
-                          value={"http://localhost:3333/confirmation"}
+                          value={"https://food-explorer-v2.vercel.app/confirmation"}
                           viewBox={`0 0 256 256`}
                         />
                       </div>
