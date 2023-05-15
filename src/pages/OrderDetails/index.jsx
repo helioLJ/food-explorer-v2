@@ -8,7 +8,7 @@ import { MdPix, MdCreditCard } from 'react-icons/md';
 import { Container, Content } from "./styles";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import InputMask from 'react-input-mask';
 import { CheckCircle, ForkKnife, Receipt } from "@phosphor-icons/react";
 
@@ -19,6 +19,9 @@ export function OrderDetails() {
   const { verifyOrder } = useOrder()
   const [order, setOrder] = useState(null)
   const params = useParams()
+  const navigate = useNavigate()
+
+  const [paymentFlow, setPaymentFlow] = useState("pedido")
   const [paymentOption, setPaymentOption] = useState("pix")
 
   const [cardNumber, setCardNumber] = useState("");
@@ -46,6 +49,10 @@ export function OrderDetails() {
     setCvc(event.target.value);
   }
 
+  function isFormValid() {
+    return cardNumber && validity && Cvc;
+  }
+
   async function verifyStatus() {
     const currentOrderId = await verifyOrder()
     const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
@@ -61,6 +68,14 @@ export function OrderDetails() {
     }
   }
 
+  function handlePaymentFlow() {
+    if (paymentFlow === "pedido") {
+      setPaymentFlow("pagamento")
+    } else {
+      setPaymentFlow("pedido")
+    }
+  }
+
   useEffect(() => {
     fetchOrder()
     verifyStatus()
@@ -71,7 +86,7 @@ export function OrderDetails() {
       <HeaderUser />
       <HeaderUserMobile />
 
-      <Content paymentOption={paymentOption}>
+      <Content paymentflow={paymentFlow} paymentoption={paymentOption}>
         <section>
           <div>
             <h2>Meu Pedido</h2>
@@ -89,7 +104,10 @@ export function OrderDetails() {
               return accumulator + (item.price * item.quantity);
             }, 0).toFixed(2))}</span>
 
-            <Button title="Avançar" />
+            <Button
+              title="Avançar"
+              onClick={handlePaymentFlow}
+            />
           </div>
 
           <div>
@@ -117,10 +135,10 @@ export function OrderDetails() {
               <div className="payment-body">
                 {
                   paymentOption == "confirmado" ? (
-                      <div className="status-payment">
-                        <CheckCircle color="#C4C4CC" size={148} />
-                        <p>Saiu pra entrega!</p>
-                      </div>
+                    <div className="status-payment">
+                      <CheckCircle color="#C4C4CC" size={148} />
+                      <p>Saiu pra entrega!</p>
+                    </div>
                   ) : paymentOption == "preparando" ? (
                     <div className="status-payment">
                       <ForkKnife color="#C4C4CC" size={148} />
@@ -131,7 +149,7 @@ export function OrderDetails() {
                       <div>
                         <QRCode
                           size={256}
-                          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                          style={{ height: "auto", maxWidth: "100%", width: "100%", borderRadius: "10px" }}
                           value={"http://localhost:3333/confirmation"}
                           viewBox={`0 0 256 256`}
                         />
@@ -174,12 +192,17 @@ export function OrderDetails() {
                           />
                         </div>
                       </div>
-                      <Button onClick={() => { }} icon={Receipt} title="Finalizar pagamento" />
+                      <Button disabled={!isFormValid()} onClick={() => navigate("/confirmation")} icon={Receipt} title="Finalizar pagamento" />
                     </>
                   )
                 }
               </div>
             </div>
+                <Button
+                  title="Voltar"
+                  className="backButton"
+                  onClick={handlePaymentFlow}
+                />
           </div>
         </section>
       </Content>

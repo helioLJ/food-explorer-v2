@@ -65,7 +65,7 @@ export const Container = styled.tr`
       height: 8px;
       width: 8px;
       border-radius: 100%;
-      display: ${({ isAdmin }) => isAdmin ? "none" : "inline-block"};
+      display: ${({ isadmin }) => isadmin ? "none" : "inline-block"};
       margin-right: 8px;
 
       background: ${({ theme, status }) => status === "Pendente" ? theme.COLORS.TOMATO_300 : status === "Preparando" ? theme.COLORS.CARROT_100 : theme.COLORS.MINT_100};

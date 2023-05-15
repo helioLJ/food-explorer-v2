@@ -25,7 +25,7 @@ export function OrderHistoric() {
       <HeaderUser />
       <HeaderUserMobile />
 
-      <Content statusColor="">
+      <Content>
         <h1>Histórico de pedidos</h1>
 
         <div className="mobileOrders">

@@ -4,13 +4,13 @@ import { X } from "@phosphor-icons/react";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
-export function MenuMobile({ handleMenuToggle, isOpen }) {
+export function MenuMobile({ handleMenuToggle, isopen }) {
   const { signOut, user } = useAuth()
   const isAdmin = user.isAdmin
   const navigate = useNavigate()
 
   return (
-    <Container isOpen={isOpen}>
+    <Container isopen={isopen.toString()}>
       <HeaderMobile>
         <button onClick={handleMenuToggle}>
           <X size={32} color="#FFFFFF" />

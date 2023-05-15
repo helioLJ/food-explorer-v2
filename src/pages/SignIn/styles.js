@@ -34,7 +34,7 @@ export const LogoContainer = styled.div`
   }
 `
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   grid-area: form;
   align-self: center;
   justify-self: center;

@@ -6,6 +6,7 @@ import { DishDetailsUser } from '../pages/DishDetailsUser'
 import { OrderDetails } from '../pages/OrderDetails'
 import { OrderHistoric } from '../pages/OrderHistoric'
 import { ConfirmationPage } from '../pages/ConfirmationPage'
+import { SearchResult } from '../pages/SearchResult'
 
 export function UserRoutes() {
   return (
@@ -16,6 +17,7 @@ export function UserRoutes() {
       <Route path="/orderhistoric" element={<OrderHistoric />} />
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/confirmation" element={<ConfirmationPage />} />
+      <Route path="/search" element={<SearchResult />} />
     </Routes>
   )
 }

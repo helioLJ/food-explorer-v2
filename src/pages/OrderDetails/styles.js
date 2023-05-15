@@ -79,7 +79,7 @@ export const Content = styled.main`
             width: 50%;
             height: 100%;
             border-radius: 8px 0 0 0;
-            background-color: ${({ theme, paymentOption }) => paymentOption == "pix" ? theme.COLORS.DARK_800 : "transparent"};
+            background-color: ${({ theme, paymentoption }) => paymentoption == "pix" ? theme.COLORS.DARK_800 : "transparent"};
             border-right: 1px solid ${({ theme }) => theme.COLORS.LIGHT_600};
             display: flex;
             align-items: center;
@@ -94,7 +94,7 @@ export const Content = styled.main`
             width: 50%;
             height: 100%;
             border-radius: 0 8px 0 0;
-            background-color: ${({ theme, paymentOption }) => paymentOption == "cc" ? theme.COLORS.DARK_800 : "transparent"};;
+            background-color: ${({ theme, paymentoption }) => paymentoption == "cc" ? theme.COLORS.DARK_800 : "transparent"};;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,7 +107,7 @@ export const Content = styled.main`
           justify-content: center;
           align-items: center;
 
-          background-color: ${({ theme, paymentOption }) => paymentOption == "pix" ? theme.COLORS.LIGHT_500 : "transparent"};
+          background-color: ${({ theme, paymentoption }) => paymentoption == "pix" ? theme.COLORS.DARK_1000 : "transparent"};
 
           .status-payment {
             text-align: center;
@@ -168,6 +168,10 @@ export const Content = styled.main`
           > button {
             margin-top: 50px;
           }
+
+          .backButton {
+            display: none;
+          }
         }
       }
     }
@@ -187,19 +191,38 @@ export const Content = styled.main`
 
   @media (max-width: 800px) {
     padding: 36px 56px 36px;
+    overflow-x: hidden;
 
     > section {
+      width: 100%;
+      position: relative;
+
       > div:first-child {
         width: 100%;
 
         button:last-child {
           display: block;
-
         }
       }
 
       > div:last-child {
-        display: none;
+        position: absolute;
+        z-index: 99;
+        transform: ${({ paymentflow }) => paymentflow === "pedido" ? "translateX(250%)" : "translateX(0%)"};
+        transition: transform 0.2s;
+        width: 100%;
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+        .backButton {
+          display: block !important;
+          margin-top: 32px;
+          align-self: flex-end;
+          max-width: 216px;
+        }
+
+        .payment-body {
+          padding: 20px !important;
+        }
       }
     }
   }

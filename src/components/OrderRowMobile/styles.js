@@ -4,6 +4,7 @@ import SelectArrow from "../../assets/select-arrow.svg"
 
 export const Container = styled.div`
   padding: 24px 20px;
+  margin-bottom: 15px;
 
   width: 100%;
   height: auto;
@@ -24,7 +25,7 @@ export const Container = styled.div`
   .header {
     display: flex;
     align-items: center;
-    justify-content: ${({ isAdmin }) => isAdmin ? "flex-start" : "space-between"};
+    justify-content: ${({ isadmin }) => isadmin ? "flex-start" : "space-between"};
     gap: 8px;
 
     > p:nth-child(2) {

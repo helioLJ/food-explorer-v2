@@ -44,7 +44,7 @@ export function HeaderUserMobile() {
         <List size={32} color="#FFFFFF" />
       </button>
 
-      <MenuMobile isOpen={isOpen} handleMenuToggle={handleMenuToggle} />
+      <MenuMobile isopen={isOpen} handleMenuToggle={handleMenuToggle} />
 
       <Link to="/">
         <img src={isAdmin ? LogoMobileFoodExplorerAdmin : LogoMobileFoodExplorer} alt="Logo da Food Explorer" />

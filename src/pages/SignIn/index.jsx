@@ -15,8 +15,18 @@ export function SignIn() {
 
   const { signIn } = useAuth()
 
+  function isFormValid() {
+    return email && password;
+  }
+
   function handleSignIn() {
     signIn({ email, password })
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter" && isFormValid()) {
+      handleSignIn();
+    }
   }
 
   return (
@@ -34,6 +44,8 @@ export function SignIn() {
           placeholder="Exemplo: exemplo@exemplo.com.br"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={handleKeyPress}
+
         />
         <InputText
           type="password"
@@ -41,9 +53,14 @@ export function SignIn() {
           placeholder="No mínimo 6 caracteres"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
 
-        <Button onClick={handleSignIn} title="Entrar" />
+        <Button
+          onClick={handleSignIn}
+          title="Entrar"
+          disabled={!isFormValid()}
+        />
 
         <Link to="/register">Criar uma conta</Link>
       </FormContainer>

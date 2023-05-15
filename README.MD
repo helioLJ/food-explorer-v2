@@ -1,6 +1,5 @@
 ![Logo](./src/assets/logo-food-explorer.png)
 ![Logo](./src/assets/capa-food-explorer.png)
-![Logo]()
 
 # Food Explorer V2 🍔💻
 
@@ -26,7 +25,7 @@ Food Explorer é um projeto completo de ponta a ponta com um front-end e back-en
 
 ### Bibliotecas 📦
 
-Phosphor Icons, React Icons, Axios, Moment, React Input Mask, React QR Code, React Router DOM, React Slick, Slick Carousel e Vite.
+Phosphor Icons, React Icons, Axios, dayjs, React Input Mask, React QR Code, React Router DOM, React Slick, Slick Carousel e Vite.
 
 ## Funcionalidades
 

@@ -16,7 +16,7 @@ export const Container = styled.div`
 
   height: 100%;
 
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(100%)' : 'translateX(0)')};
+  transform: ${({ isopen }) => (isopen === "true" ? 'translateX(100%)' : 'translateX(0)')};
   transition: transform 0.3s ease-in-out;
 
   @media (max-width: 800px) {

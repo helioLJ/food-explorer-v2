@@ -17,6 +17,10 @@ export function SignUp() {
 
   const navigate = useNavigate()
 
+  function isFormValid() {
+    return name && email && password;
+  }
+
   async function handleSignUp() {
     if (!name || !email || !password) {
       return alert("Preencha todos os campos!")
@@ -35,6 +39,12 @@ export function SignUp() {
     }
   }
 
+  function handleKeyPress(event) {
+    if (event.key === "Enter" && isFormValid()) {
+      handleSignUp();
+    }
+  }
+
   return (
     <Container>
       <LogoContainer>
@@ -50,6 +60,7 @@ export function SignUp() {
           placeholder="Exemplo: Maria da Silva"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <InputText
           type="email"
@@ -57,6 +68,7 @@ export function SignUp() {
           placeholder="Exemplo: exemplo@exemplo.com.br"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <InputText
           type="password"
@@ -64,9 +76,14 @@ export function SignUp() {
           placeholder="No mínimo 6 caracteres"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
 
-        <Button onClick={handleSignUp} title="Criar conta" />
+        <Button
+          onClick={handleSignUp}
+          title="Criar conta"
+          disabled={!isFormValid()}
+        />
 
         <Link to="/">Já tenho uma conta</Link>
       </FormContainer>

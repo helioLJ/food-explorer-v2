@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { Container } from "./styles";
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
@@ -7,6 +7,8 @@ export function OrderRowMobile({ id, status, date, details, updateOrders }) {
   const { user } = useAuth()
   const isAdmin = user.isAdmin
 
+  const formattedDate = dayjs(date).subtract(3, 'hour').format('YYYY-MM-DD HH:mm:ss');
+
   async function handleUpdateStatus(e) {
     const newStatus = e.target.value;
     await api.put(`/orders/${id}`, { status: newStatus })
@@ -14,13 +16,13 @@ export function OrderRowMobile({ id, status, date, details, updateOrders }) {
   }
 
   return (
-    <Container isAdmin={isAdmin} status={status}>
+    <Container isadmin={isAdmin ? isAdmin : undefined} status={status}>
       <div className="header">
         <p>{String(id).padStart(6, '0')}</p>
         {
-          !isAdmin ? <p><div className="circle"></div>{status}</p> : ""
+          !isAdmin ? <p><span className="circle"></span>{status}</p> : ""
         }
-        <p>{moment(date).format('DD/MM [às] HH[h]mm')}</p>
+        <p>{dayjs(formattedDate).format('DD/MM [às] HH[h]mm')}</p>
       </div>
       <p>{details}</p>
       {

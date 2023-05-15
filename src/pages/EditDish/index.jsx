@@ -32,6 +32,10 @@ export function EditDish() {
 
   const [dishId, setDishId] = useState(null)
 
+  function isFormValid() {
+    return newName && newDescription && newImage !== Camera && newPrice && newCategory && newIngredients.length > 0;
+  }
+
   function handleImage(e) {
     const file = e.target.files[0]
     setNewImageFile(file)
@@ -161,7 +165,11 @@ export function EditDish() {
 
             <div className="buttons">
               <Button onClick={handleDeleteDish} title="Excluir prato" />
-              <Button onClick={handleUpdateDish} title="Salvar alterações" />
+              <Button
+                onClick={handleUpdateDish}
+                title="Salvar alterações"
+                disabled={!isFormValid()}
+              />
             </div>
           </form>
         </section>

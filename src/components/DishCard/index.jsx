@@ -18,7 +18,7 @@ export function DishCard({ name, image_url, description, price, id }) {
 
   const [totalPrice, setTotalPrice] = useState(price)
   const [quantity, setQuantity] = useState(1)
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
 
   function increaseQuantity() {
@@ -37,15 +37,23 @@ export function DishCard({ name, image_url, description, price, id }) {
     setQuantity(quantity - 1)
   }
 
-  function toggleFavorite() {
-    setIsFavorite(!isFavorite)
+  async function toggleFavorite() {
+    if(isFavorite === true) {
+      const response = await api.delete(`favorites/${id}`)
+      setIsFavorite(false)
+      alert(response.data.message)
+    } else {
+      const response = await api.post(`favorites/${id}`)
+      setIsFavorite(true)
+      alert(response.data.message)
+    }
   }
 
   async function handleOrder() {
     const currentOrderId = await verifyOrder()
     let orderStatus
 
-    if(currentOrderId !== 0) {
+    if (currentOrderId !== 0) {
       const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
       orderStatus = currentOrder.order.status
     }
@@ -71,7 +79,7 @@ export function DishCard({ name, image_url, description, price, id }) {
         const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
         const currentDish = currentOrder.dishes.find((dish) => dish.id === id);
         let updatedOrder
-        if(currentDish === undefined) {
+        if (currentDish === undefined) {
           updatedOrder = await api.put(`/orders/${currentOrderId}`, {
             dish_id: id,
             quantity: quantity
@@ -82,7 +90,7 @@ export function DishCard({ name, image_url, description, price, id }) {
             quantity: currentDish.quantity + quantity
           })
         }
-        
+
         alert(updatedOrder.data.message)
         navigate(`/order/${currentOrderId}`)
 
@@ -96,6 +104,22 @@ export function DishCard({ name, image_url, description, price, id }) {
     }
 
   }
+
+  useEffect(() => {
+    async function fetchFavorite() {
+      const { data } = await api.get("favorites")
+
+      const isFavorited = data.some((dish) => dish.id === id);
+
+      if (isFavorited) {
+        setIsFavorite(true)
+      } else {
+        setIsFavorite(false)
+      }
+    }
+
+    fetchFavorite()
+  }, [isFavorite])
 
   useEffect(() => {
     async function fetchImage() {

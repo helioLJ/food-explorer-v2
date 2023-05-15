@@ -33,6 +33,10 @@ export function NewDish() {
 
   const navigate = useNavigate()
 
+  function isFormValid() {
+    return name && description && image !== Camera && price && category && ingredients.length > 0;
+  }
+
   function handleImage(e) {
     const file = e.target.files[0]
     setImageFile(file)
@@ -126,7 +130,11 @@ export function NewDish() {
 
             <TextArea value={description} onChange={e => setDescription(e.target.value)} label="Descrição" placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
 
-            <Button onClick={handleCreate} title="Adicionar Prato" />
+            <Button
+            onClick={handleCreate}
+            title="Adicionar Prato"
+            disabled={!isFormValid()}
+            />
           </form>
         </section>
       </Content>
