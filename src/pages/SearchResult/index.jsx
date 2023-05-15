@@ -13,14 +13,12 @@ import { useLocation } from "react-router-dom";
 export function SearchResult() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const searchTerm = searchParams.get('q');
-  console.log(searchTerm);
+  const searchTerm = searchParams.get('q') || '';
 
   const [data, setData] = useState(null)
 
   async function fetchDishes() {
     const { data } = await api.get(`dishes?ingredient=${searchTerm}`)
-    console.log(data);
     setData(data)
   }
 

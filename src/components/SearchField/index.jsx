@@ -1,16 +1,17 @@
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
-import { useNavigate } from "react-router-dom";
-
 import { Container } from "./styles";
-import { useState } from "react";
 
 export function SearchField() {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [searchIngredient, setSearchIngredient] = useState("")
 
   function handleSearch() {
+    console.log(location);
     navigate({
       pathname: '/search',
       search: `?q=${searchIngredient}`
