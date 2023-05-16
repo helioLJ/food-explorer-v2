@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useOrder } from "../../hooks/order";
 
-export function OrderCard({ name, price, id, updateOrder }) {
+export function OrderCard({ name, price, id, updateOrder, paymentOption }) {
   const [imageUrl, setImageUrl] = useState(null)
   const { verifyOrder } = useOrder()
 
@@ -13,7 +13,7 @@ export function OrderCard({ name, price, id, updateOrder }) {
     const { data: currentOrder } = await api.get(`/orders/${currentOrderId}`)
     const currentDish = currentOrder.dishes.find((dish) => dish.id === id);
 
-    if(currentDish.quantity > 1) {
+    if (currentDish.quantity > 1) {
       try {
         const updatedOrder = await api.put(`/orders/${currentOrderId}`, { dish_id: id, quantity: (currentDish.quantity - 1) })
         alert(updatedOrder.data.message)
@@ -60,7 +60,8 @@ export function OrderCard({ name, price, id, updateOrder }) {
       <div>
         <p>1x {name} <span>R$ {price.toFixed(2)}</span></p>
         <button
-        onClick={handleRemoveDish}
+          onClick={handleRemoveDish}
+          disabled={paymentOption === "confirmado" || paymentOption === "preparando" ? true : false}
         >Remover do Pedido</button>
       </div>
     </Container>

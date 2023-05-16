@@ -95,7 +95,14 @@ export function OrderDetails() {
               order &&
               order.dishes.map(({ name, quantity, price, id }) => (
                 Array.from({ length: quantity }, (_, index) => (
-                  <OrderCard updateOrder={fetchOrder} key={`${name}-${index}`} name={name} price={price} id={id} />
+                  <OrderCard
+                  updateOrder={fetchOrder}
+                  key={`${name}-${index}`}
+                  name={name}
+                  price={price}
+                  id={id}
+                  paymentOption={paymentOption}
+                  />
                 ))
               ))
             }
