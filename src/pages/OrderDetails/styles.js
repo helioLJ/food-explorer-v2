@@ -59,6 +59,7 @@ export const Content = styled.main`
 
     > div:last-child {
       width: 50%;
+      height: 100%;
 
       .backButton {
         display: none;

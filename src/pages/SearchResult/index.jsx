@@ -8,12 +8,9 @@ import { DishCard } from "../../components/DishCard";
 import { Container, Content } from "./styles";
 
 import { api } from "../../services/api";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export function SearchResult() {
-  // const location = useLocation();
-  // const urlSearchParams = new URLSearchParams(location.search);
-  // const searchTerm = urlSearchParams.get('q') || '';
   const [searchParams, setSearchParams] = useSearchParams()
   const searchTerm = searchParams.get('q') || ''
 
