@@ -10,12 +10,12 @@ import { OrderProvider } from './hooks/order'
 import { Routes } from './routes'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <AuthProvider>
-        <OrderProvider>
-          <Routes />
-        </OrderProvider>
-      </AuthProvider>
-    </ThemeProvider>
+  <ThemeProvider theme={theme}>
+    <GlobalStyles />
+    <AuthProvider>
+      <OrderProvider>
+        <Routes />
+      </OrderProvider>
+    </AuthProvider>
+  </ThemeProvider>
 )

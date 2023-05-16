@@ -147,7 +147,7 @@ export function DishCard({ name, image_url, description, price, id }) {
 
       <img src={imageUrl} alt="Imagem do Prato" />
 
-      <Link to={`dish/${id}`} >{name} &#62;</Link>
+      <Link relative="path" to={`../dish/${id}`} >{name} &#62;</Link>
 
       <p>{description}</p>
 

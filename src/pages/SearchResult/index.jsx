@@ -8,12 +8,14 @@ import { DishCard } from "../../components/DishCard";
 import { Container, Content } from "./styles";
 
 import { api } from "../../services/api";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 export function SearchResult() {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const searchTerm = searchParams.get('q') || '';
+  // const location = useLocation();
+  // const urlSearchParams = new URLSearchParams(location.search);
+  // const searchTerm = urlSearchParams.get('q') || '';
+  const [searchParams, setSearchParams] = useSearchParams()
+  const searchTerm = searchParams.get('q') || ''
 
   const [data, setData] = useState(null)
 
@@ -24,7 +26,7 @@ export function SearchResult() {
 
   useEffect(() => {
     fetchDishes()
-  }, [])
+  }, [searchParams])
 
   return (
     <Container>
