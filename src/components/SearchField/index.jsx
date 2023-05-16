@@ -8,15 +8,14 @@ export function SearchField() {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState()
 
-
-  function navigateToSearch(e) {
+  function handleSearch(e) {
     e.preventDefault()
     navigate(`/search?q=${searchTerm}`)
   }
 
   return (
-    <Container onSubmit={navigateToSearch}>
-      <button type="submit" onClick={navigateToSearch}>
+    <Container onSubmit={handleSearch}>
+      <button type="submit">
         <MagnifyingGlass size={24} color="#c4c4cc" />
       </button>
 
