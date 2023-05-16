@@ -6,16 +6,18 @@ import { Container } from "./styles";
 
 export function SearchField() {
   const navigate = useNavigate()
-  const [searchParams, setSearchParams] = useSearchParams()
-  const searchTerm = searchParams.get('q') || ''
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // const searchTerm = searchParams.get('q') || ''
+  const [searchTerm, setSearchTerm] = useState()
 
-  function navigateToSearch() {
+
+  function navigateToSearch(e) {
+    e.preventDefault()
     navigate(`/search?q=${searchTerm}`)
   }
 
   function handleSearch(e) {
     const q = e.target.value
-
     if (q) {
       setSearchParams({ q })
     } else {
@@ -31,7 +33,7 @@ export function SearchField() {
 
       <input
         value={searchTerm}
-        onChange={handleSearch}
+        onChange={e => setSearchTerm(e.target.value)}
         type="text"
         placeholder="Busque por pratos ou ingredientes"
       />
