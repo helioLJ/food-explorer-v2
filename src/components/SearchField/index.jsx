@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 
 import { Container } from "./styles";
 
 export function SearchField() {
   const navigate = useNavigate()
-  // const [searchParams, setSearchParams] = useSearchParams()
-  // const searchTerm = searchParams.get('q') || ''
   const [searchTerm, setSearchTerm] = useState()
 
 
   function navigateToSearch(e) {
     e.preventDefault()
     navigate(`/search?q=${searchTerm}`)
-  }
-
-  function handleSearch(e) {
-    const q = e.target.value
-    if (q) {
-      setSearchParams({ q })
-    } else {
-      setSearchParams({})
-    }
   }
 
   return (
