@@ -77,7 +77,7 @@ export function NewDish() {
       await api.patch(`/dishes/picture/${createdDish.data.id}`, fileUploadForm)
 
       alert(createdDish.data.message)
-      navigate(`/dish/${createdDish.data.id}`)
+      navigate("/")
     } catch (error) {
       if (error.response.data.message) {
         alert(error.response.data.message);

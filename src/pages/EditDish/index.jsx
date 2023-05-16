@@ -93,7 +93,7 @@ export function EditDish() {
       }
 
       alert(updatedDish.data.message)
-      navigate(`/dish/${dishId}`)
+      navigate("/")
     } catch (error) {
       if (error.response.data.message) {
         alert(error.response.data.message);
