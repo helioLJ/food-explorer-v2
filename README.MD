@@ -5,6 +5,8 @@
 
 Food Explorer é um projeto completo de ponta a ponta com um front-end e back-end, desenvolvido usando as tecnologias aprendidas no curso Explorer da Rocketseat. É um aplicativo interativo para um restaurante fictício, onde os usuários podem visualizar pratos, detalhes dos pratos e preços, além de poder favoritar, bem como fazer pedidos e efetuar pagamentos. Enquanto o usuário Admin pode criar, editar e excluir pratos, bem como alterar o status dos pedidos feitos.
 
+Esta aplicação consome minha própria API também: https://github.com/helioLJ/food-explorer-api
+
 
 ## Índice
 
